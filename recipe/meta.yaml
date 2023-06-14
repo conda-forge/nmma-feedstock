@@ -1,5 +1,5 @@
 {% set name = "nmma" %}
-{% set version = "0.0.8" %}
+{% set version = "0.0.10" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
-  sha256: ba303910a4f9692fff7c834f2c4562b989658578c79e972c19b8c4fdb01c02aa
+  sha256: 8e4c5efc1e75e3bc24ff27cda7997322948faf3ecde3c81bd3cddf7646784295
 
 build:
   entry_points:
@@ -44,15 +44,18 @@ requirements:
     - arviz
     - astropy >=4.3.1
     - bilby >=1.2.0
-    - bilby_pipe ==1.0.5
+    - bilby_pipe >=1.1.0
     - dust_extinction
     - future
+    - ligo.skymap
     - matplotlib-base >=2.0
+    - mpi4py
     - numpy >=1.9
     - pandas >=1.3.4
+    - parallel-bilby
     - pymultinest
     - python >=3.7
-    - scikit-learn >=0.23.1
+    - scikit-learn >=1.0.2
     - scipy >=1.7.1
     - sncosmo
 
