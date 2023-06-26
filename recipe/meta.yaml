@@ -52,10 +52,13 @@ requirements:
     - healpy
     - h5py
     - joblib
+    - lal
+    - lalsimulation
     - ligo.skymap
     - ligo-followup-advocate
     - matplotlib-base >=2.0
     - mpi4py
+    - nestcheck
     - numpy >=1.9
     - pandas >=1.3.4
     - parallel-bilby
