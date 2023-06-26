@@ -46,11 +46,14 @@ requirements:
     - bilby >=1.2.0
     - bilby_pipe >=1.1.0
     - dust_extinction
+    - dynesty
     - future
     - gwpy
     - healpy
     - h5py
+    - joblib
     - ligo.skymap
+    - ligo-followup-advocate
     - matplotlib-base >=2.0
     - mpi4py
     - numpy >=1.9
