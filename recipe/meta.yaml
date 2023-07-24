@@ -1,5 +1,5 @@
 {% set name = "nmma" %}
-{% set version = "0.0.13" %}
+{% set version = "0.0.18" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
-  sha256: 6262503628009548b11110403c9773f6d2f83997046268b29b066d4c91516f55
+  sha256: 94c9081cf5c3a5c55a989aa624603669ce2281a9741a44428b153f8b847724ff
 
 build:
   entry_points:
@@ -49,6 +49,7 @@ requirements:
     - astropy >=4.3.1
     - bilby >=1.2.0
     - bilby_pipe >=1.1.0
+    - colorcet
     - corner
     - dust_extinction
     - dynesty
