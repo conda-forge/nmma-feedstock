@@ -1,5 +1,5 @@
 {% set name = "nmma" %}
-{% set version = "0.0.19" %}
+{% set version = "0.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
-  sha256: 27c46f56ecbeb8f157670246fed29a2d8c00c9db454ababd118ba0949b58aacc
+  sha256: f82bf74f1bcbe97b6d9f36438fdc7c45a50d73edfd178adcb2f3f10645f17f35
 
 build:
   entry_points:
