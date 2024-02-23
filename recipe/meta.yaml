@@ -64,7 +64,7 @@ requirements:
     - lalsimulation
     - ligo.skymap
     - ligo-followup-advocate
-    - matplotlib-base >=2.0
+    - matplotlib-base<3.8,>=2.0
     - mpi4py
     - nestcheck
     - notebook
