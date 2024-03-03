@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/nuclear-multimessenger-astronomy/nmma/archive/refs/tags/0.1.4.tar.gz
-  sha256: 3ea96954e3da8d2bca29e6d7431d60fba4ca4c2caff8cf97c8aed1e7a7ad5d9f
+  url: https://enlil.gw.physik.uni-potsdam.de/~jhawar/nmma-0.1.4.tar.gz
+  sha256: ed9429f8de9930955566347779309b9551721df0f4f0eb9c9f1db7e919fcfd8d
 
 build:
   entry_points:
@@ -103,7 +103,7 @@ test:
     - lightcurve-detection --help
     - nmma-create-injection --help
     - gwem-resampling --help
-    - gwem-resampling_condor --help
+    - gwem-resampling-condor --help
     - gwem-Hubble-estimate --help
     - lightcurve-analysis-condor --help
   requires:
