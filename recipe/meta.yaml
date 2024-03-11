@@ -45,7 +45,7 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.9
+    - python >=3.9,<3.12
   run:
     - arviz
     - astropy >=4.3.1
