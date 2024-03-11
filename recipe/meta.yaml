@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://enlil.gw.physik.uni-potsdam.de/~jhawar/nmma-0.1.4.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
   sha256: ed9429f8de9930955566347779309b9551721df0f4f0eb9c9f1db7e919fcfd8d
 
 build:
