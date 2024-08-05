@@ -67,7 +67,6 @@ requirements:
     - matplotlib-base <3.8,>=2.0
     - mpi4py
     - nestcheck
-    - nflows
     - notebook
     - numpy >=1.9
     - pandas >=1.3.4,<2.0
@@ -82,7 +81,7 @@ requirements:
     - seaborn
     - sncosmo
     - tensorflow
-    - torch
+    - pytorch
     - torchvision
     - tornado
     - tqdm
