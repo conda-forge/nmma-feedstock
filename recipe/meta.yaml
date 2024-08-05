@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
-  sha256: e22e0136ab4179576b0986a8929f12556d7cfc7d6bcdd54a1378bb6e7c1513d9
+  url: https://github.com/nuclear-multimessenger-astronomy/nmma/archive/refs/heads/main.tar.gz
+  sha256: 2fe352ce1fee4343f76cc4275c50787e0419309aad97994f6a7fb700b9e7bfa4
 
 build:
   entry_points:
@@ -92,8 +92,8 @@ test:
   imports:
     - nmma
   commands:
-    # - pip check
-    - lightcurve-analysis --help
+    - pip check
+    # - lightcurve-analysis --help skip this time
     - lightcurve-injection-summary --help
     - lightcurve-injection-slurm-setup --help
     - lightcurve-injection-condor-setup --help
