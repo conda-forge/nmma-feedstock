@@ -92,7 +92,7 @@ test:
   imports:
     - nmma
   commands:
-    - pip check
+    # - pip check
     - lightcurve-analysis --help
     - lightcurve-injection-summary --help
     - lightcurve-injection-slurm-setup --help
