@@ -1,5 +1,5 @@
 {% set name = "nmma" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
-  sha256: e22e0136ab4179576b0986a8929f12556d7cfc7d6bcdd54a1378bb6e7c1513d9
+  sha256: 954a53a23fa9a90d417d219833a428ead889e25434f8a30a5d05ad73124e5617
 
 build:
   entry_points:
@@ -87,6 +87,7 @@ requirements:
     - tornado
     - tqdm
     - ultranest
+    - multiprocess <=0.70.16
 
 test:
   imports:
