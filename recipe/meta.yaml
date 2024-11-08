@@ -87,6 +87,7 @@ requirements:
     - tornado
     - tqdm
     - ultranest
+    - multiprocess <=0.70.16
 
 test:
   imports:
