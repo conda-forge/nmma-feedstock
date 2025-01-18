@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
   sha256: 954a53a23fa9a90d417d219833a428ead889e25434f8a30a5d05ad73124e5617
 
 build:
@@ -40,13 +40,13 @@ build:
 
   script: |
     {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
   noarch: python
 
 requirements:
   host:
     - pip
-    - python >=3.9,<3.13
+    - python {{ python_min }}
   run:
     - arviz
     - astropy-base >=4.3.1
@@ -74,7 +74,7 @@ requirements:
     - parallel-bilby
     - p-tqdm <1.4.1
     - pymultinest
-    - python >=3.7
+    - python >={{ python_min }}
     - pyyaml
     - requests
     - scikit-learn >=1.0.2,<1.2
@@ -114,6 +114,7 @@ test:
     - pip
     - mpi4py
     - nestcheck
+    - python {{ python_min }}
 
 about:
   home: https://github.com/nuclear-multimessenger-astronomy/nmma
