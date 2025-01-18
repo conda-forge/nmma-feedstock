@@ -47,6 +47,7 @@ requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - arviz
     - astropy-base >=4.3.1
