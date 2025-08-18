@@ -50,9 +50,9 @@ requirements:
     - setuptools
   run:
     - arviz
-    - astropy-base >= 5.3.4
+    - astropy-base >=5.3.4
     - bilby >=2.4.1
-    - bilby_pipe==1.5.0
+    - bilby_pipe ==1.5.0
     - colorcet
     - corner
     - dust_extinction
@@ -66,7 +66,7 @@ requirements:
     - lalsimulation
     - ligo.skymap
     - ligo-followup-advocate
-    - matplotlib >3.8
+    - matplotlib-base >3.8
     - mpi4py
     - nestcheck
     - notebook
@@ -78,7 +78,7 @@ requirements:
     - python >={{ python_min }}
     - pyyaml
     - requests
-    - scikit-learn>=1.0.2
+    - scikit-learn >=1.0.2
     - scipy >=1.10
     - seaborn
     - sncosmo
