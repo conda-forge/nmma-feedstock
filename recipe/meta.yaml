@@ -1,4 +1,4 @@
-{% set python_min = "3.11" %}
+{% set python_min = "3.12" %}
 {% set name = "nmma" %}
 {% set version = "1.0.1" %}
 
@@ -50,10 +50,10 @@ requirements:
     - python {{ python_min }}
     - setuptools
   run:
-    - arviz
-    - astropy-base >=5.3.4
-    - bilby >=2.4.1
-    - bilby_pipe ==1.5.0
+    - arviz >=1.2
+    - astropy-base >=6.0
+    - bilby >=2.7.1
+    - bilby_pipe >=1.7.0
     - colorcet
     - corner
     - dust_extinction
@@ -62,12 +62,13 @@ requirements:
     - gwpy
     - healpy
     - h5py
+    - huggingface_hub
     - joblib
     - lal
     - lalsimulation
     - ligo.skymap
     - ligo-followup-advocate
-    - matplotlib-base >3.8
+    - matplotlib-base >=3.8
     - mpi4py
     - nestcheck
     - notebook
@@ -79,11 +80,13 @@ requirements:
     - python >={{ python_min }}
     - pyyaml
     - requests
+    - schwimmbad
     - scikit-learn >=1.0.2
-    - scipy >=1.10
+    - scipy >=1.15
     - seaborn
     - sncosmo
-    - tensorflow
+    - tensorflow-cpu >=2.19
+    - toml
     - tornado
     - tqdm
     - ultranest
