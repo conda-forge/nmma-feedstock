@@ -59,12 +59,11 @@ requirements:
     - python >={{ python_min }}
     - pyyaml
     - requests
-    - schwimmbad
+    # >=0.4.2 drops the removed-in-setuptools-81 pkg_resources import
+    - schwimmbad >=0.4.2
     - scikit-learn >=1.0.2
     - scipy >=1.15
     - seaborn
-    # schwimmbad imports pkg_resources at import time, which ships with setuptools
-    - setuptools
     - sncosmo
     - tensorflow-cpu >=2.19
     - toml
