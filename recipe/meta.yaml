@@ -81,7 +81,6 @@ test:
     - lightcurve-analysis-lbol --help
     - lightcurve-injection-slurm-setup --help
     - combine-EOS --help
-    - create-lightcurve-slurm --help
     - create-svdmodel --help
     - plot-svdmodel-benchmarks --help
     - lightcurve-generation --help

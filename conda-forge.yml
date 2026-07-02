@@ -1,5 +1,4 @@
 azure:
-  free_disk_space: true
   settings_linux:
     swapfile_size: 20GiB
 github:
@@ -8,3 +7,5 @@ github:
 conda_forge_output_validation: true
 conda_build:
   pkg_format: '2'
+workflow_settings:
+  free_disk_space: true
