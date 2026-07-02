@@ -9,6 +9,11 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
   sha256: 4e0741cad9e4f3d6fe3f8d4c39a8db201a15832a4f0fb9cab6f0eb962cc4a2c2
+  patches:
+    # tensorflow-cpu is provided on conda-forge by tensorflow-base, whose
+    # dist-info is named `tensorflow`, so rewrite the metadata requirement to
+    # match and keep `pip check` happy (the run dep stays tensorflow-cpu).
+    - tensorflow-cpu-metadata.patch
 
 build:
   entry_points:

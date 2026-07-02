@@ -1,0 +1,20 @@
+From: conda-forge nmma feedstock
+Subject: [PATCH] Require `tensorflow` instead of `tensorflow-cpu` in metadata
+
+On conda-forge the CPU TensorFlow build is provided by `tensorflow-base`,
+whose Python distribution is named `tensorflow` (there is no `tensorflow-cpu`
+dist-info). The recipe still depends on the `tensorflow-cpu` conda package to
+get the CPU build, but the installed distribution reports itself as
+`tensorflow`, so an unpatched `tensorflow-cpu` requirement makes `pip check`
+fail. Rewrite the metadata requirement to `tensorflow` to match; the upstream
+PyPI package keeps `tensorflow-cpu` to avoid pulling CUDA wheels.
+
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -49,5 +49,5 @@
+     "ligo.skymap",
+     "healpy",
+     "scikit-learn",
+-    'tensorflow-cpu>=2.19; platform_system == "Linux"',
++    'tensorflow>=2.19; platform_system == "Linux"',
+ ]
