@@ -1,6 +1,6 @@
-{% set python_min = '3.11' %}
+{% set python_min = "3.12" %}
 {% set name = "nmma" %}
-{% set version = "0.2.3" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,37 +8,16 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/nmma-{{ version }}.tar.gz
-  sha256: e11dc67dda5ba7fc1a846a75dd76315b55567fbe0e2369ebc0f2ffd1a5b1aabf
+  sha256: 4e0741cad9e4f3d6fe3f8d4c39a8db201a15832a4f0fb9cab6f0eb962cc4a2c2
+  patches:
+    # tensorflow-cpu is provided on conda-forge by tensorflow-base, whose
+    # dist-info is named `tensorflow`, so rewrite the metadata requirement to
+    # match and keep `pip check` happy (the run dep stays tensorflow-cpu).
+    - tensorflow-cpu-metadata.patch
 
 build:
-  entry_points:
-    - nmma-generation=nmma.pbilby.generation:main_nmma
-    - nmma-gw-generation=nmma.pbilby.generation:main_nmma_gw
-    - nmma-analysis=nmma.pbilby.analysis:main_nmma
-    - nmma-gw-analysis=nmma.pbilby.analysis:main_nmma_gw
-    - lightcurve-analysis=nmma.em.analysis:main
-    - lightcurve-analysis-lbol=nmma.em.analysis_lbol:main
-    - lightcurve-analysis-condor=nmma.em.analysis_condor:main
-    - lightcurve-injection-summary=nmma.em.injection_summary:main
-    - lightcurve-injection-slurm-setup=nmma.em.create_injection_slurm:main
-    - lightcurve-injection-condor-setup=nmma.em.create_injection_condor:main
-    - lightcurve-manual=nmma.em.manual:main
-    - lightcurve-marginalization=nmma.em.lightcurve_marginalization:main
-    - combine-EOS=nmma.em.combine_EOS:main
-    - create-lightcurve-slurm=nmma.em.create_lightcurves_slurm:main
-    - create-lightcurve-condor=nmma.em.create_lightcurves_condor:main
-    - create-svdmodel=nmma.em.create_svdmodel:main
-    - svdmodel-benchmark=nmma.em.svdmodel_benchmark:main
-    - svdmodel-download=nmma.utils.models:main
-    - lightcurve-generation=nmma.em.create_lightcurves:main
-    - lightcurve-detection=nmma.em.detect_lightcurves:main
-    - nmma-create-injection=nmma.eos.create_injection:main
-    - gwem-resampling=nmma.em.gwem_resampling:main
-    - gwem-resampling-condor=nmma.em.gwem_resampling_condor:main
-    - gwem-Hubble-estimate=nmma.em.gwem_Hubble_estimate:main
-    - convert-skyportal-lcs=tools.convert_skyportal_lcs:main
-    - resample-grid=tools.resample_grid:main
-
+  # Console scripts are declared in nmma's pyproject.toml ([project.scripts])
+  # and created automatically by pip, so they are not duplicated here.
   script: |
     {{ PYTHON }} -m pip install . -vv
   number: 0
@@ -50,10 +29,10 @@ requirements:
     - python {{ python_min }}
     - setuptools
   run:
-    - arviz
-    - astropy-base >=5.3.4
-    - bilby >=2.4.1
-    - bilby_pipe ==1.5.0
+    - arviz >=1.2
+    - astropy-base >=6.0
+    - bilby >=2.7.1
+    - bilby_pipe >=1.7.0
     - colorcet
     - corner
     - dust_extinction
@@ -62,12 +41,13 @@ requirements:
     - gwpy
     - healpy
     - h5py
+    - huggingface_hub
     - joblib
     - lal
     - lalsimulation
     - ligo.skymap
     - ligo-followup-advocate
-    - matplotlib-base >3.8
+    - matplotlib-base >=3.8
     - mpi4py
     - nestcheck
     - notebook
@@ -79,11 +59,14 @@ requirements:
     - python >={{ python_min }}
     - pyyaml
     - requests
+    # >=0.4.2 drops the removed-in-setuptools-81 pkg_resources import
+    - schwimmbad >=0.4.2
     - scikit-learn >=1.0.2
-    - scipy >=1.10
+    - scipy >=1.15
     - seaborn
     - sncosmo
-    - tensorflow
+    - tensorflow-cpu >=2.19
+    - toml
     - tornado
     - tqdm
     - ultranest
@@ -94,22 +77,18 @@ test:
     - nmma
   commands:
     - pip check
-    # - lightcurve-analysis --help skip this time
-    - lightcurve-injection-summary --help
+    - lightcurve-analysis --help
+    - lightcurve-analysis-lbol --help
     - lightcurve-injection-slurm-setup --help
-    - lightcurve-injection-condor-setup --help
-    - lightcurve-marginalization --help
     - combine-EOS --help
-    - create-lightcurve-slurm --help
-    - create-lightcurve-condor --help
     - create-svdmodel --help
+    - plot-svdmodel-benchmarks --help
     - lightcurve-generation --help
-    - lightcurve-detection --help
-    - nmma-create-injection --help
     - gwem-resampling --help
-    - gwem-resampling-condor --help
     - gwem-Hubble-estimate --help
-    - lightcurve-analysis-condor --help
+    - convert-skyportal-lcs --help
+    - resample-grid --help
+    - multi-config-analysis --help
   requires:
     - pip
     - mpi4py
