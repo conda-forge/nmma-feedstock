@@ -16,34 +16,8 @@ source:
     - tensorflow-cpu-metadata.patch
 
 build:
-  entry_points:
-    - nmma-generation=nmma.pbilby.generation:main_nmma
-    - nmma-gw-generation=nmma.pbilby.generation:main_nmma_gw
-    - nmma-analysis=nmma.pbilby.analysis:main_nmma
-    - nmma-gw-analysis=nmma.pbilby.analysis:main_nmma_gw
-    - lightcurve-analysis=nmma.em.analysis:main
-    - lightcurve-analysis-lbol=nmma.em.analysis_lbol:main
-    - lightcurve-analysis-condor=nmma.em.analysis_condor:main
-    - lightcurve-injection-summary=nmma.em.injection_summary:main
-    - lightcurve-injection-slurm-setup=nmma.em.create_injection_slurm:main
-    - lightcurve-injection-condor-setup=nmma.em.create_injection_condor:main
-    - lightcurve-manual=nmma.em.manual:main
-    - lightcurve-marginalization=nmma.em.lightcurve_marginalization:main
-    - combine-EOS=nmma.em.combine_EOS:main
-    - create-lightcurve-slurm=nmma.em.create_lightcurves_slurm:main
-    - create-lightcurve-condor=nmma.em.create_lightcurves_condor:main
-    - create-svdmodel=nmma.em.create_svdmodel:main
-    - svdmodel-benchmark=nmma.em.svdmodel_benchmark:main
-    - svdmodel-download=nmma.utils.models:main
-    - lightcurve-generation=nmma.em.create_lightcurves:main
-    - lightcurve-detection=nmma.em.detect_lightcurves:main
-    - nmma-create-injection=nmma.eos.create_injection:main
-    - gwem-resampling=nmma.em.gwem_resampling:main
-    - gwem-resampling-condor=nmma.em.gwem_resampling_condor:main
-    - gwem-Hubble-estimate=nmma.em.gwem_Hubble_estimate:main
-    - convert-skyportal-lcs=tools.convert_skyportal_lcs:main
-    - resample-grid=tools.resample_grid:main
-
+  # Console scripts are declared in nmma's pyproject.toml ([project.scripts])
+  # and created automatically by pip, so they are not duplicated here.
   script: |
     {{ PYTHON }} -m pip install . -vv
   number: 0
@@ -102,22 +76,21 @@ test:
     - nmma
   commands:
     - pip check
-    # - lightcurve-analysis --help skip this time
-    - lightcurve-injection-summary --help
+    - lightcurve-analysis --help
+    - lightcurve-analysis-lbol --help
+    - nmma-analysis --help
     - lightcurve-injection-slurm-setup --help
-    - lightcurve-injection-condor-setup --help
-    - lightcurve-marginalization --help
     - combine-EOS --help
     - create-lightcurve-slurm --help
-    - create-lightcurve-condor --help
     - create-svdmodel --help
+    - svdmodel-benchmark --help
+    - plot-svdmodel-benchmarks --help
     - lightcurve-generation --help
-    - lightcurve-detection --help
-    - nmma-create-injection --help
     - gwem-resampling --help
-    - gwem-resampling-condor --help
     - gwem-Hubble-estimate --help
-    - lightcurve-analysis-condor --help
+    - convert-skyportal-lcs --help
+    - resample-grid --help
+    - multi-config-analysis --help
   requires:
     - pip
     - mpi4py
